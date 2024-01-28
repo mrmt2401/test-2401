@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\Team;
 
 class Owner extends Authenticatable
 {
@@ -41,5 +41,9 @@ class Owner extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
+    public function team()
+    {
+        return $this->hasOne(Team::class); //1対1
+    }
 }
